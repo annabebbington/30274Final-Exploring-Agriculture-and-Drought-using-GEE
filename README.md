@@ -1,7 +1,27 @@
 # 30274Final-Exploring-Agriculture-and-Drought-using-GEE
 
-This Google Earth Engine tutorial uses two raster datasets. The [GFSAD dataset](https://developers.google.com/earth-engine/datasets/catalog/USGS_GFSAD1000_V1)  from the Global Food-Security Suppport Analysis Data Project maps where global cropland is rainfed or irrigated. 
+This Google Earth Engine tutorial uses two raster datasets to identify agricultural areas in the continental US that are vulnerable to drought. This analysis uses cropland data to identify cropland that is rainfed (vs. irrigated), and a drought index to identify areas that are experiencing dry or drought conditions. 
+
+### The Data
+
+The [GFSAD dataset](https://developers.google.com/earth-engine/datasets/catalog/USGS_GFSAD1000_V1)  from the Global Food-Security Suppport Analysis Data Project maps where global cropland is rainfed or irrigated. 
 > The GFSAD is a NASA-funded project to provide high-resolution global cropland data and their water use that contributes towards global food security in the twenty-first century. The GFSAD products are derived through multi-sensor remote sensing data (e.g., Landsat, MODIS, AVHRR), secondary data, and field-plot data and aims at documenting cropland dynamics.
+
+The GFSAD data contains 6 categories 
+
+> 0 - non-croplands
+> 
+> 1 - Croplands: irrigation major
+> 
+> 2 - Croplands: irrigation minor 
+> 
+> 3 - Croplands: rainfed
+> 
+> 4 - Croplands: rainfed, minor fragments
+> 
+> 5 - Croplands: rainfed, very minor fragments
+> 
+
 
 The [GRIDMET DROUGHT: CONUS Drought Incides](https://developers.google.com/earth-engine/datasets/catalog/GRIDMET_DROUGHT) provides multiple drought indices at 4km resolution. This tutorial uses the standardised precipitation index (SPI), which follows the follwing breakdown. 
 

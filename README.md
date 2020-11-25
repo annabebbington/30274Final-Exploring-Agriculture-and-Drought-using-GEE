@@ -88,9 +88,24 @@ Map.setCenter(-96.7313, 43.5460, 5);
 ![croplandzoom](CropLand_zoom.png)
 
 #### Identifying Areas with Only Rainfed Cropland 
+The cropland map is quite busy and a little hard to interpret. For the purpose of this tutorial we are interested in just the rainfed cropland, since it is more vulnerable to periods of drought. First we are going to visualize the different categories of rainfed agriculture by creating new visualization parameters. Since we are only interested in values 3, 4, and 5, we will set the minimum value at 2. This will group together all categories with values 2 and below. The palette needs four colors, one for each of the remaining rainfed categories, and one for the non-rainfed categories. Add the new map layer, and make sure to include a descriptive layer name.
+```
+// Color Palette for rainfed cropland 
+var cropMaskVis2 = {
+  min: 2.0,
+  max: 5.0,
+  palette: ['white', '006400', '2E8B57', '8FBC8F'],
+};
+// Add Rainfed cropland map 
+Map.addLayer(crop, cropMaskVis2, 'Rainfed Croplands, dif');
+```
+![Rainfed_dif](Rainfed_dif.png)
 
 
 ## Drought Data 
 
 ## Indentifying At-Risk Agricultural Areas 
+
+#### Creating Boolean Maps
+
 

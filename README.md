@@ -1,4 +1,4 @@
-# 30274Final-Exploring-Agriculture-and-Drought-using-GEE
+# Identifying US Cropland that is Vulnerable to Drought
 
 This Google Earth Engine tutorial uses two raster datasets to identify agricultural areas in the continental US that are vulnerable to drought. This analysis uses cropland data to identify cropland that is rainfed (vs. irrigated), and a drought index to identify areas that are experiencing dry or drought conditions. 
 
@@ -7,7 +7,7 @@ This Google Earth Engine tutorial uses two raster datasets to identify agricultu
 The [GFSAD dataset](https://developers.google.com/earth-engine/datasets/catalog/USGS_GFSAD1000_V1)  from the Global Food-Security Suppport Analysis Data Project maps where global cropland is rainfed or irrigated. 
 > The GFSAD is a NASA-funded project to provide high-resolution global cropland data and their water use that contributes towards global food security in the twenty-first century. The GFSAD products are derived through multi-sensor remote sensing data (e.g., Landsat, MODIS, AVHRR), secondary data, and field-plot data and aims at documenting cropland dynamics.
 
-The GFSAD data contains 6 categories 
+The GFSAD data contains 6 categories: 
 
 > 0 - non-croplands
 > 
@@ -23,7 +23,7 @@ The GFSAD data contains 6 categories
 > 
 
 
-The [GRIDMET DROUGHT: CONUS Drought Incides](https://developers.google.com/earth-engine/datasets/catalog/GRIDMET_DROUGHT) provides multiple drought indices at 4km resolution. This tutorial uses the standardised precipitation index (SPI), which follows the follwing breakdown. 
+The [GRIDMET DROUGHT: CONUS Drought Incides](https://developers.google.com/earth-engine/datasets/catalog/GRIDMET_DROUGHT) provides multiple drought indices at 4km resolution. This tutorial uses the standardised precipitation index (SPI), which follows the follwing breakdown: 
 
 > 2.0 or more (extremely wet)
 >
@@ -49,13 +49,31 @@ The [GRIDMET DROUGHT: CONUS Drought Incides](https://developers.google.com/earth
 
 
 
+## Mapping Cropland Data 
 
+Begin by importing the Cropland data as a GEE image. 
 
+```
+// Import Cropland Data 
+var crop = ee.Image('USGS/GFSAD1000_V1');
+```
+Next, we create the visualization parameters for the cropland data. The color palette used below is taken from the metadata, but feel free to change the colors. The `min` and `max` values are based on the values associated with the 6 landcover categories.  
+```
+// Create visualization parameters for crop layer. Color palette suggested in metadata. 
+var cropMaskVis = {
+  min:0, 
+  max:5, 
+  palette: ['black', 'orange', 'brown', '02a50f', 'green', 'yellow'],
+```
+Add the layer to the map, and make sure to give the layer a descriptive name to keep track of different layers as we add more throughout this tutorial. 
+```
+// Add crop layer to map
+Map.addLayer(crop, cropMaskVis, 'Cropland')
+```
+The output map is a global map showing non-croplands and croplands that are either irrigated or rainfed, and should look something like this: 
+INSERT IMAGE 
 
-
-### the data 
-
-## Cropland Data 
+####
 
 ## Drought Data 
 

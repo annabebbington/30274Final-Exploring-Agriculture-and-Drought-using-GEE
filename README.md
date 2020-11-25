@@ -174,8 +174,7 @@ Map.addLayer(droughtareas, {palette: 'FFFFFF, 8B0000'}, 'Drought Areas')
 ```
 ![dryareas](DryAreas.png)
 Dry areas
-
-![droughtareas)(DroughtAreas.png)
+![droughtareas](DroughtAreas.png)
 Drought areas 
 
 ## Indentifying At-Risk Agricultural Areas 

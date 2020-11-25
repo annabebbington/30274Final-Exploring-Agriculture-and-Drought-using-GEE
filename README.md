@@ -197,4 +197,4 @@ Agriculture in areas experiencing dry spells
 ![droughtAg](droughtAg.png)
 Agriculture in areas experiencing severe or extreme drought
 
-This final map in particular highglights that by early Fall 2012 the drought in Upper Midwest had significant implications for agriculture in the region. The Upper Midwest is the heart of corn, grain, and soybean production in the US, and even over the summer ]farmers were already reporting smaller harvests than usual](https://www.theatlantic.com/photo/2012/08/the-drought-of-2012/100360/).
+This final map in particular highglights that by early Fall 2012 the drought in Upper Midwest had significant implications for agriculture in the region. The Upper Midwest is the heart of corn, grain, and soybean production in the US, and even over the summer [farmers were already reporting smaller harvests than usual](https://www.theatlantic.com/photo/2012/08/the-drought-of-2012/100360/).

@@ -85,6 +85,7 @@ You can also use `Map.setCenter(long,lat, zoom)` to center the map on latitude a
 // Center the map using lat and long
 Map.setCenter(-96.7313, 43.5460, 5); 
 ```
+![croplandzoom](CropLand_zoom.png)
 
 #### Identifying Areas with Only Rainfed Cropland 
 

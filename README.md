@@ -72,7 +72,7 @@ Map.addLayer(crop, cropMaskVis, 'Cropland')
 ```
 The output map is a global map showing non-croplands and croplands that are either irrigated or rainfed, and should look something like this: 
 
-INSERT IMAGE 
+![cropland](CropLand.png)
 
 To focus the extent of the map for this tutorial, we are going to zoom in on the Midwest, specifically Sioux Falls, South Dakota. 
 You can do this in one of two ways. First is to use the `Add a marker` feature in the GEE map window. Add the marker to Sioux Falls, or wherever you would like to focus the map, and the geometry will automatically import as a new variable `geometry`. Rename the variable with a geographic or descriptive name. We are then going to center the map on the geometry variable using `Map.centerObject(geometry variable, zoom)`. 

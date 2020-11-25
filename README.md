@@ -102,7 +102,63 @@ Map.addLayer(crop, cropMaskVis2, 'Rainfed Croplands, dif');
 ![Rainfed_dif](Rainfed_dif.png)
 
 
-## Drought Data 
+## Mapping Drought Data 
+
+Begin by importing the Drought data as a GEE image collection.  
+
+```
+// Import Drought Data 
+var GRIDMET = ee.ImageCollection('GRIDMET/DROUGHT');
+```
+Since this is an image collection, it includes images from 1980 to present (give or take a few weeks). This dataset also includes 26 bands, which cover multiple different drounght indices, and for 3 of the indices different bands represent different time scales, corresponding to time aggregation of the data. For this tutorial we are using the standard precipitation index (SPI) at a 1 year scale. The band is called `spi1y`. 
+
+We are first going to filter the image collection by data. We do this by transforming the data from a text data `year-month-day` to a format that can be read by GEE. dS represents the start date and dE is the end date. ee.Date is used to convert the date into a GEE formated date. 
+
+```
+// Filter GRIDMET Image collection by date 
+var dS = '2012-09-11';
+var dE = '2012-09-11';
+var dSUTC = ee.Date(dS, 'GMT');
+var dEUTC = ee.Date(dE, 'GMT');
+var filtered = GRIDMET.filterDate(dSUTC, dEUTC.advance(1, 'day'));
+```
+The `filtered` variable now includes images for all the bands **within the start and end dates**. 
+
+**Choosing different dates:** The dataset is only updated every 5 (ish) days, so not all dates are valid start and end dates. Use this code to print out all dates included in the Image Collection, to choose alternative dates. 
+```
+// Print out all dates included in the image collection.
+print(GRIDMET.aggregate_array('system:index'));
+``` 
+Next we are going to select a single band from the images in the `filtered` variable. As mentioned above, we are using `spi1y`
+```
+// Select SPI 1-year aggregated data from Image Collection 
+var SPI = filtered.select('spi1y');
+```
+
+Next, we create the visualization parameters for the SPI (1 year) data. The `min` and `max` values are based on the SPI scale included above and in the metadata. Since the data is continuous, the palette is also a continuous palette that assigns colors to the extreme and middle values (-2.5, 0, and 2.5).  
+```
+// Create visualization parameters for  SPI layer
+var SPIColors = '8B0000, FFFFFF, 006400';
+var SPIVis = {
+  min: -2.5,
+  max: 2.5,
+  palette: SPIColors
+};
+```
+Add the layer to the map, and make sure to give the layer a descriptive name to keep track of different layers as we add more throughout this tutorial. 
+```
+// Add crop layer to map
+Map.addLayer(SPI.first(), SPIVis, 'SPI-1year');
+```
+The output map is a map of the continental US showing areas that are 'near-normal' (shown in white), 'dry' or 'in drought' (shades of red), and 'wet' (shades of green). The map should look something like this:
+
+![cropland](SPI.png)
+
+Since we already centered the map on Sioux Falls above, the map automatically zooms into the Midwest. 
+
+#### Identifying Dry Areas
+
+
 
 ## Indentifying At-Risk Agricultural Areas 
 

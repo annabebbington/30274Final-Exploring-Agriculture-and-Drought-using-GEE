@@ -112,7 +112,7 @@ var GRIDMET = ee.ImageCollection('GRIDMET/DROUGHT');
 ```
 Since this is an image collection, it includes images from 1980 to present (give or take a few weeks). This dataset also includes 26 bands, which cover multiple different drounght indices, and for 3 of the indices different bands represent different time scales, corresponding to time aggregation of the data. For this tutorial we are using the standard precipitation index (SPI) at a 1 year scale. The band is called `spi1y`. 
 
-We are first going to filter the image collection by data. We do this by transforming the data from a text data `year-month-day` to a format that can be read by GEE. dS represents the start date and dE is the end date. ee.Date is used to convert the date into a GEE formated date. 
+We are first going to filter the image collection by data. We do this by transforming the data from a text data `year-month-day` to a format that can be read by GEE. `dS` represents the start date and `dE` is the end date. `ee.Date` is used to convert the date into a GEE formated date. 
 
 ```
 // Filter GRIDMET Image collection by date 
@@ -157,8 +157,25 @@ The output map is a map of the continental US showing areas that are 'near-norma
 Since we already centered the map on Sioux Falls above, the map automatically zooms into the Midwest. 
 
 #### Identifying Dry Areas
+In this tutorial we want to find areas of the US that are experiencing drier than usual or drought conditions. In the SPI scale, values below -0.5 represent an 'inicipient dry spell' and anything less than -1.6 is a moderate severe or extreme drought. We are going to create two new layers: one of dry areas in the US, and one of areas experiencing severe or extreme drought. 
 
+We begin by creating two new variables `dryareas` and `droughtareas` using `.lte` (less than or equal to). 
 
+```
+// Select dry and drought areas from SPI
+var dryareas = SPI.first().lte(-0.5);
+var droughtareas = SPI.first().lte(-1.6);
+```
+We then add them to the map. Since they are both Boolean variables/maps we dont need to set min/max values for the vizualization parameters. Instead we can just set a 0/1 color palette.
+```
+// Add Boolean layers to map
+Map.addLayer(dryareas, {palette: 'white, black'}, 'Dry Areas');
+Map.addLayer(droughtareas, {palette: 'FFFFFF, 8B0000'}, 'Drought Areas')
+```
+![dryareas](DryAreas.png)
+Dry areas
+![droughtareas)(DroughtAreas.png)
+Drought areas 
 
 ## Indentifying At-Risk Agricultural Areas 
 

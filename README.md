@@ -178,7 +178,21 @@ Dry areas
 Drought areas 
 
 ## Indentifying At-Risk Agricultural Areas 
+Using the opacity slider in the layer drop-down menu in the map window, we can explore the overlap between dry and drought-afflicted areas and rainfed croplands. ![rainfed_drought](Rainfed_drought.png)
+Pink areas are areas afflicted by drought in 2012, green areas are rainfed croplands, and brown areas are where rainfed croplands overlap with areas in drought. 
 
-#### Creating Boolean Maps
+While adding/removing map layers and adjusting opacity allows us to explore where these two issues overlap and identify potentially at-risk agricultural land, it is also fiddley. In the next step, we are going to make two new variables to add as map layers that show where 
+1. rainfed croplands are in dry areas and,
+2. rainfed croplands are in drought areas
+```
+// Overlay cropland and drought data 
+var AgRisk = rainfed.multiply(dryareas);
+var HighAgRisk = rainfed.multiply(droughtareas);
+Map.addLayer(AgRisk, {palette:['white', 'blue']}, 'Rainfed Ag in Dry Areas');
+Map.addLayer(HighAgRisk,{palette:['white', 'pink']}, 'Rainfed Ag in Drought Areas');
+```
 
-
+![dryAg](dryAg.png)
+Agriculture in areas experiencing dry spells
+![droughtAg](droughtAg.png)
+Agriculture in areas experiencing severe or extreme drought

@@ -71,9 +71,23 @@ Add the layer to the map, and make sure to give the layer a descriptive name to 
 Map.addLayer(crop, cropMaskVis, 'Cropland')
 ```
 The output map is a global map showing non-croplands and croplands that are either irrigated or rainfed, and should look something like this: 
+
 INSERT IMAGE 
 
-####
+To focus the extent of the map for this tutorial, we are going to zoom in on the Midwest, specifically Sioux Falls, South Dakota. 
+You can do this in one of two ways. First is to use the `Add a marker` feature in the GEE map window. Add the marker to Sioux Falls, or wherever you would like to focus the map, and the geometry will automatically import as a new variable `geometry`. Rename the variable with a geographic or descriptive name. We are then going to center the map on the geometry variable using `Map.centerObject(geometry variable, zoom)`. 
+```
+// Center the map on the geometry variable, and set the zoom level
+Map.centerObject(SiouxFalls, 5); 
+```
+You can also use `Map.setCenter(long,lat, zoom)` to center the map on latitude and longitude, and again set the zoom level.
+```
+// Center the map using lat and long
+Map.setCenter(-96.7313, 43.5460, 5); 
+```
+
+#### Identifying Areas with Only Rainfed Cropland 
+
 
 ## Drought Data 
 

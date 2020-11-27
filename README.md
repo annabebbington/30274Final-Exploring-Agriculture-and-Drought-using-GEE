@@ -178,7 +178,7 @@ Dry areas
 Drought areas 
 
 ## Indentifying At-Risk Agricultural Areas 
-Using the opacity slider in the layer drop-down menu in the map window, we can explore the overlap between dry and drought-afflicted areas and rainfed croplands. ![rainfed_drought](Rainfed_drought.png)
+Using the opacity slider in the layer drop-down menu in the map window, we can explore the overlap between dry and drought-afflicted areas (Drought Areas Layer) and rainfed croplands ((Rainfed Boolean Layer). ![rainfed_drought](Rainfed_drought.png)
 Pink areas are areas afflicted by drought in 2012, green areas are rainfed croplands, and brown areas are where rainfed croplands overlap with areas in drought. 
 
 While adding/removing map layers and adjusting opacity allows us to explore where these two issues overlap and identify potentially at-risk agricultural land, it is also fiddley. In the next step, we are going to make two new variables to add as map layers that show where 
@@ -198,3 +198,4 @@ Agriculture in areas experiencing dry spells
 Agriculture in areas experiencing severe or extreme drought
 
 This final map in particular highglights that by early Fall 2012 the drought in Upper Midwest had significant implications for agriculture in the region. The Upper Midwest is the heart of corn, grain, and soybean production in the US, and even over the summer [farmers were already reporting smaller harvests than usual](https://www.theatlantic.com/photo/2012/08/the-drought-of-2012/100360/).
+

@@ -101,6 +101,15 @@ Map.addLayer(crop, cropMaskVis2, 'Rainfed Croplands, dif');
 ```
 ![Rainfed_dif](Images/Rainfed_dif.png)
 
+To make future overlay steps easier, we are going to also create a Boolean cropland map by grouping together all 3 rainfed categories. We do this by using `/gte` to filter only the pixels with values 3, 4, and 5 (all rainfed categories) and create a new variable `rainfed`. Since it is a Boolean Map, we are going to visualize it using just two colors
+```
+// Create a variable of only rainfed agriculture
+var rainfed = crop.gte(3)
+print(rainfed)
+
+Map.addLayer(rainfed, {palette: ['White', 'OliveDrab']}, 'Rainfed Boolean')
+```
+![rainfed_boolean](Images/Rainfed_boolean.png)
 
 ## Mapping Drought Data 
 

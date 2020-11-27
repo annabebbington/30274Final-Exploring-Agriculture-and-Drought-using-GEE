@@ -63,7 +63,7 @@ Next, we create the visualization parameters for the cropland data. The color pa
 var cropMaskVis = {
   min:0, 
   max:5, 
-  palette: ['black, orange, brown, 02a50f, green, yellow'],
+  palette: ['black', 'orange', 'brown', '02a50f', 'green', 'yellow'],
 ```
 Add the layer to the map, and make sure to give the layer a descriptive name to keep track of different layers as we add more throughout this tutorial. 
 ```
@@ -94,7 +94,7 @@ The cropland map is quite busy and a little hard to interpret. For the purpose o
 var cropMaskVis2 = {
   min: 2.0,
   max: 5.0,
-  palette: ['White, DarkGreen, SeaGreen, DarkSeaGreen'],
+  palette: ['White', 'DarkGreen', 'SeaGreen', 'DarkSeaGreen'],
 };
 // Add Rainfed cropland map 
 Map.addLayer(crop, cropMaskVis2, 'Rainfed Croplands, dif');
@@ -132,13 +132,13 @@ print(GRIDMET.aggregate_array('system:index'));
 Next we are going to select a single band from the images in the `filtered` variable. As mentioned above, we are using `spi1y`
 ```
 // Select SPI 1-year aggregated data from Image Collection 
-var SPI = filtered.select('spi1y');
+var SPI = filtered.select('spi1y');'
 ```
 
 Next, we create the visualization parameters for the SPI (1 year) data. The `min` and `max` values are based on the SPI scale included above and in the metadata. Since the data is continuous, the palette is also a continuous palette that assigns colors to the extreme and middle values (-2.5, 0, and 2.5).  
 ```
 // Create visualization parameters for  SPI layer
-var SPIColors = 'DarkRed, White, DarkGreen';
+var SPIColors = ['DarkRed', 'White', 'DarkGreen'];
 var SPIVis = {
   min: -2.5,
   max: 2.5,
@@ -169,8 +169,8 @@ var droughtareas = SPI.first().lte(-1.6);
 We then add them to the map. Since they are both Boolean variables/maps we dont need to set min/max values for the vizualization parameters. Instead we can just set a 0/1 color palette.
 ```
 // Add Boolean layers to map
-Map.addLayer(dryareas, {palette: 'white, black'}, 'Dry Areas');
-Map.addLayer(droughtareas, {palette: 'FFFFFF, 8B0000'}, 'Drought Areas')
+Map.addLayer(dryareas, {palette: 'White, Burlywood'}, 'Dry Areas');
+Map.addLayer(droughtareas, {palette: 'White, FireBrick'}, 'Drought Areas')
 ```
 ![dryareas](DryAreas.png)
 Dry areas
@@ -188,8 +188,8 @@ While adding/removing map layers and adjusting opacity allows us to explore wher
 // Overlay cropland and drought data 
 var AgRisk = rainfed.multiply(dryareas);
 var HighAgRisk = rainfed.multiply(droughtareas);
-Map.addLayer(AgRisk, {palette:['white', 'blue']}, 'Rainfed Ag in Dry Areas');
-Map.addLayer(HighAgRisk,{palette:['white', 'pink']}, 'Rainfed Ag in Drought Areas');
+Map.addLayer(AgRisk, {palette:['white', 'GoldenRod']}, 'Rainfed Ag in Dry Areas');
+Map.addLayer(HighAgRisk,{palette:['white', 'DarkRed']}, 'Rainfed Ag in Drought Areas');
 ```
 
 ![dryAg](dryAg.png)

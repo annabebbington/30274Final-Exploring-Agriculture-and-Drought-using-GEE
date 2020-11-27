@@ -72,7 +72,7 @@ Map.addLayer(crop, cropMaskVis, 'Cropland')
 ```
 The output map is a global map showing non-croplands and croplands that are either irrigated or rainfed, and should look something like this: 
 
-![cropland](CropLand.png)
+![cropland](Images/CropLand.png)
 
 To focus the extent of the map for this tutorial, we are going to zoom in on the Midwest, specifically Sioux Falls, South Dakota. 
 You can do this in one of two ways. First is to use the `Add a marker` feature in the GEE map window. Add the marker to Sioux Falls, or wherever you would like to focus the map, and the geometry will automatically import as a new variable `geometry`. Rename the variable with a geographic or descriptive name. We are then going to center the map on the geometry variable using `Map.centerObject(geometry variable, zoom)`. 
@@ -99,7 +99,7 @@ var cropMaskVis2 = {
 // Add Rainfed cropland map 
 Map.addLayer(crop, cropMaskVis2, 'Rainfed Croplands, dif');
 ```
-![Rainfed_dif](Rainfed_dif.png)
+![Rainfed_dif](Images/Rainfed_dif.png)
 
 
 ## Mapping Drought Data 
@@ -153,7 +153,7 @@ Map.addLayer(SPI.first(), SPIVis, 'SPI-1year');
 The output map is a map of the continental US showing areas that are 'near-normal' (shown in white), 'dry' or 'in drought' (shades of red), and 'wet' (shades of green). The map should look something like this:
 
 
-![cropland](SPI.png)
+![cropland](Images/SPI.png)
 
 Since we already centered the map on Sioux Falls above, the map automatically zooms into the Midwest. 
 
@@ -173,13 +173,14 @@ We then add them to the map. Since they are both Boolean variables/maps we dont 
 Map.addLayer(dryareas, {palette: 'White, Burlywood'}, 'Dry Areas');
 Map.addLayer(droughtareas, {palette: 'White, FireBrick'}, 'Drought Areas')
 ```
-![dryareas](DryAreas.png)
+![dryareas](Images/DryAreas.png)
 Dry areas
-![droughtareas](DroughtAreas.png)
+![droughtareas](Images/DroughtAreas.png)
 Drought areas 
 
 ## Indentifying At-Risk Agricultural Areas 
-Using the opacity slider in the layer drop-down menu in the map window, we can explore the overlap between dry and drought-afflicted areas (Drought Areas Layer) and rainfed croplands ((Rainfed Boolean Layer). ![rainfed_drought](Rainfed_drought.png)
+Using the opacity slider in the layer drop-down menu in the map window, we can explore the overlap between dry and drought-afflicted areas (Drought Areas Layer) and rainfed croplands ((Rainfed Boolean Layer).
+![rainfed_drought](Images/Rainfed_drought.png)
 Pink areas are areas afflicted by drought in 2012, green areas are rainfed croplands, and brown areas are where rainfed croplands overlap with areas in drought. 
 
 While adding/removing map layers and adjusting opacity allows us to explore where these two issues overlap and identify potentially at-risk agricultural land, it is also fiddley. In the next step, we are going to make two new variables to add as map layers that show where 
@@ -193,9 +194,9 @@ Map.addLayer(AgRisk, {palette:['white', 'GoldenRod']}, 'Rainfed Ag in Dry Areas'
 Map.addLayer(HighAgRisk,{palette:['white', 'DarkRed']}, 'Rainfed Ag in Drought Areas');
 ```
 
-![dryAg](dryAg.png)
+![dryAg](Images/dryAg.png)
 Agriculture in areas experiencing dry spells
-![droughtAg](droughtAg.png)
+![droughtAg](Images/droughtAg.png)
 Agriculture in areas experiencing severe or extreme drought
 
 This final map in particular highglights that by early Fall 2012 the drought in Upper Midwest had significant implications for agriculture in the region. The Upper Midwest is the heart of corn, grain, and soybean production in the US, and even over the summer [farmers were already reporting smaller harvests than usual](https://www.theatlantic.com/photo/2012/08/the-drought-of-2012/100360/).

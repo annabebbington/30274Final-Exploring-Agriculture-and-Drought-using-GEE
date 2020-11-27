@@ -63,7 +63,7 @@ Next, we create the visualization parameters for the cropland data. The color pa
 var cropMaskVis = {
   min:0, 
   max:5, 
-  palette: ['black', 'orange', 'brown', '02a50f', 'green', 'yellow'],
+  palette: ['black, orange, brown, 02a50f, green, yellow'],
 ```
 Add the layer to the map, and make sure to give the layer a descriptive name to keep track of different layers as we add more throughout this tutorial. 
 ```
@@ -94,7 +94,7 @@ The cropland map is quite busy and a little hard to interpret. For the purpose o
 var cropMaskVis2 = {
   min: 2.0,
   max: 5.0,
-  palette: ['white', '006400', '2E8B57', '8FBC8F'],
+  palette: ['White, DarkGreen, SeaGreen, DarkSeaGreen'],
 };
 // Add Rainfed cropland map 
 Map.addLayer(crop, cropMaskVis2, 'Rainfed Croplands, dif');
@@ -138,7 +138,7 @@ var SPI = filtered.select('spi1y');
 Next, we create the visualization parameters for the SPI (1 year) data. The `min` and `max` values are based on the SPI scale included above and in the metadata. Since the data is continuous, the palette is also a continuous palette that assigns colors to the extreme and middle values (-2.5, 0, and 2.5).  
 ```
 // Create visualization parameters for  SPI layer
-var SPIColors = '8B0000, FFFFFF, 006400';
+var SPIColors = 'DarkRed, White, DarkGreen';
 var SPIVis = {
   min: -2.5,
   max: 2.5,

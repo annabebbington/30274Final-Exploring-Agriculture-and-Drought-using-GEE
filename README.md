@@ -152,6 +152,7 @@ Map.addLayer(SPI.first(), SPIVis, 'SPI-1year');
 ```
 The output map is a map of the continental US showing areas that are 'near-normal' (shown in white), 'dry' or 'in drought' (shades of red), and 'wet' (shades of green). The map should look something like this:
 
+
 ![cropland](SPI.png)
 
 Since we already centered the map on Sioux Falls above, the map automatically zooms into the Midwest. 

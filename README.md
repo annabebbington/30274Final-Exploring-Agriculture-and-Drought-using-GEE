@@ -2,6 +2,9 @@
 
 This Google Earth Engine tutorial uses two raster datasets to identify agricultural areas in the continental US that are vulnerable to drought. This analysis uses cropland data to identify cropland that is rainfed (vs. irrigated), and a drought index to identify areas that are experiencing dry or drought conditions. 
 
+### Objectives 
+This tutorial is designed to explore basic Google Earth Engine techniques to manipulate data, create new data layers, and combine datasets for analysis. For people interested in questions of the vulnerability of agriculture to climate and weather, this tutorial can also be used to explore geographic areas of agricultural vulnerabilty in the continental US. The code in this tutorial focuses on the 2012 drought that devastated Midwestern harvests, and centers on the Upper Midwest, however many features of this code are easily adaptable to other areas of the US, different scales of analysis, and different time periods to fit the users interest. 
+
 ### The Data
 
 The [GFSAD dataset](https://developers.google.com/earth-engine/datasets/catalog/USGS_GFSAD1000_V1)  from the Global Food-Security Suppport Analysis Data Project maps where global cropland is rainfed or irrigated. 
@@ -99,6 +102,7 @@ var cropMaskVis2 = {
 // Add Rainfed cropland map 
 Map.addLayer(crop, cropMaskVis2, 'Rainfed Croplands, dif');
 ```
+[This link](https://en.wikipedia.org/wiki/Web_colors) is a helpful resource for finding other color options 
 ![Rainfed_dif](Images/Rainfed_dif.png)
 
 To make future overlay steps easier, we are going to also create a Boolean cropland map by grouping together all 3 rainfed categories. We do this by using `/gte` to filter only the pixels with values 3, 4, and 5 (all rainfed categories) and create a new variable `rainfed`. Since it is a Boolean Map, we are going to visualize it using just two colors
@@ -209,3 +213,5 @@ Map.addLayer(HighAgRisk,{palette:['white', 'DarkRed']}, 'Rainfed Ag in Drought A
 **Agriculture in areas experiencing severe or extreme drought**
 
 This final map in particular highglights that by early Fall 2012 the drought in Upper Midwest had significant implications for agriculture in the region. The Upper Midwest is the heart of corn, grain, and soybean production in the US, and even over the summer [farmers were already reporting smaller harvests than usual](https://www.theatlantic.com/photo/2012/08/the-drought-of-2012/100360/).
+
+###### Please contact me with any corrections or suggestions for this tutorial at [abebbington17@gmail.com](abebbington17@gmail.com) or through Github. 

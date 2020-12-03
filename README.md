@@ -67,11 +67,12 @@ var cropMaskVis = {
   min:0, 
   max:5, 
   palette: ['black', 'orange', 'brown', '02a50f', 'green', 'yellow'],
+  };
 ```
 Add the layer to the map, and make sure to give the layer a descriptive name to keep track of different layers as we add more throughout this tutorial. 
 ```
 // Add crop layer to map
-Map.addLayer(crop, cropMaskVis, 'Cropland')
+Map.addLayer(crop, cropMaskVis, 'Cropland');
 ```
 The output map is a global map showing non-croplands and croplands that are either irrigated or rainfed, and should look something like this: 
 
@@ -108,10 +109,10 @@ Map.addLayer(crop, cropMaskVis2, 'Rainfed Croplands, dif');
 To make future overlay steps easier, we are going to also create a Boolean cropland map by grouping together all 3 rainfed categories. We do this by using `/gte` to filter only the pixels with values 3, 4, and 5 (all rainfed categories) and create a new variable `rainfed`. Since it is a Boolean Map, we are going to visualize it using just two colors
 ```
 // Create a variable of only rainfed agriculture
-var rainfed = crop.gte(3)
-print(rainfed)
+var rainfed = crop.gte(3);
+print(rainfed);
 
-Map.addLayer(rainfed, {palette: ['White', 'OliveDrab']}, 'Rainfed Boolean')
+Map.addLayer(rainfed, {palette: ['White', 'OliveDrab']}, 'Rainfed Boolean');
 ```
 ![rainfed_boolean](Images/Rainfed_boolean.png)
 
@@ -184,7 +185,7 @@ We then add them to the map. Since they are both Boolean variables/maps we dont 
 ```
 // Add Boolean layers to map
 Map.addLayer(dryareas, {palette: 'White, Burlywood'}, 'Dry Areas');
-Map.addLayer(droughtareas, {palette: 'White, FireBrick'}, 'Drought Areas')
+Map.addLayer(droughtareas, {palette: 'White, FireBrick'}, 'Drought Areas');
 ```
 ![dryareas](Images/DryAreas.png)
 **Dry areas**
